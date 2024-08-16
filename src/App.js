@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
+// import CharacterMap from '../CharacterMap/CharacterMap';
+import CharacterMap from './components/CharacterMap/CharacterMap';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+  const [text, setText] = useState('');
+
+  return(
+    <div className="wrapper">
+      <label htmlFor="text">
+        <p>Your Text</p>
+        <textarea
+          id="text"
+          name="text"
+          rows="10"
+          cols="100"
+          onChange={event => setText(event.target.value)}
         >
-          Learn React
-        </a>
-      </header>
+        </textarea>
+      </label>
+      <CharacterMap text={text} />
     </div>
-  );
+  )
 }
 
 export default App;
